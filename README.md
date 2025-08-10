@@ -1,6 +1,6 @@
 # Netflix Content Analysis
 ## Overview
-This project analyzes Netflix’s global content from 2015–2024, focusing on genre performance, country output, and content strategy over time.
+This project analyzes Netflix’s global content from 2010–2025(mid), focusing on genre performance, country output, and content strategy over time.
 The goal is to identify trends that could inform business decisions, content acquisition, and production strategy.
 
 **Key Questions**:
