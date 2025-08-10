@@ -27,11 +27,42 @@ title, type, release_year, rating, vote_count, country, genres
 
 ## Process
 #### 1. Data Cleaning (Python / Pandas)
-- Merged Movies and TV Shows datasets.
-- Standardized column names & formats.
-- Removed missing/invalid release years.
-- Split multi-value fields (genres, country) into junction tables for relational database use.
-- Added primary key content_id.
+- Merged Movies and TV Shows datasets
+  ```python
+  df = pd.concat([movies, tv], ignore_index=True)
+  ```
+- Standardized column names & formats
+   ```python
+  df = pd.concat([movies, tv], ignore_index=True)
+  ```
+- Removed missing/invalid 
+   ```python
+   df = df.dropna(subset=["title", "type", "release_year", "rating", "country", "genres"])
+   df = df[df["rating"] > 0]
+
+   this_year = datetime.now().year
+   df.loc[df["release_year"] > this_year, "release_year"] = this_year
+  ```
+- Split multi-value fields (genres, country) into junction tables for relational database use
+   ```python
+   genres_j = (df[["content_id", "genres"]]
+               .assign(genres=lambda d: d["genres"].str.split(","))
+               .explode("genres"))
+   genres_j["genres"] = genres_j["genres"].astype(str).str.strip()
+   genres_j = genres_j[(genres_j["genres"] != "") & (genres_j["genres"] != "Unknown")]
+   genres_j = genres_j.drop_duplicates().rename(columns={"genres": "genre"})
+   
+   countries_j = (df[["content_id", "country"]]
+                  .assign(country=lambda d: d["country"].str.split(",")))
+   countries_j = countries_j.explode("country")
+   countries_j["country"] = countries_j["country"].astype(str).str.strip()
+   countries_j = countries_j[(countries_j["country"] != "") & (countries_j["country"] != "Unknown")]
+   countries_j = countries_j.drop_duplicates()
+  ```
+- Added primary key content_id
+   ```python
+  df.insert(0, "content_id", range(1, len(df) + 1))
+  ```
 
 #### 2. Schema
    
