@@ -1,7 +1,6 @@
-# Netflix Content Analysis
+# Netflix Content Analysis: [Tableau Dashboard](https://public.tableau.com/app/profile/udval.enkhtaivan/viz/NetflixContentAnalysis_17548660855840/Dashboard1)
 ## Overview
-This project analyzes Netflix’s global content from 2010–2025(mid), focusing on genre performance, country output, and content strategy over time.
-The goal is to identify trends that could inform business decisions, content acquisition, and production strategy.
+This project examines Netflix’s global content from 2010 to mid-2025, focusing on genre performance, country output, and content strategy over time. The aim was to identify key patterns and shifts in these areas to better understand Netflix’s content trends. 
 
 **Key Questions**:
 1. What genres perform best globally?
@@ -9,21 +8,45 @@ The goal is to identify trends that could inform business decisions, content acq
 3. How has Netflix’s mix of movies vs. TV shows evolved over time?
 4. What are the top-performing titles within each top genre?
 
-Final interactive dashboard: https://public.tableau.com/app/profile/udval.enkhtaivan/viz/NetflixContentAnalysis_17548660855840/Dashboard1
-
 ## Dataset
-Source: https://www.kaggle.com/datasets/bhargavchirumamilla/netflix-movies-and-tv-shows-till-2025
+Source: [Netflix Movies and TV Shows till 2025](https://www.kaggle.com/datasets/bhargavchirumamilla/netflix-movies-and-tv-shows-till-2025)
+This dataset contains two CSV files:
+1. ``` netflix_movies_detailed_up_to_2025.csv ``` - Includes detailed information on Netflix Movies such as:
+   - ```show_id```
+   - ```type```
+   - ```title```
+   - ```director```
+   - ```cast```
+   - ```date_added```
+   - ```release_year```
+   - ```rating```
+   - ```duration```
+   - ```genres```
+   - ```language```
+   - ```description```
+   - ```popularity```
+   - ```vote_count```
+   - ```vote_average```
+   - ```budget```
+   - ```revenue```
+2. ``` netflix_tv_shows_detailed_up_to_2025.csv ``` - Includes detailed information on Netflix TV shows, such as:
+   - ```show_id```
+   - ```type```
+   - ```title```
+   - ```director```
+   - ```cast```
+   - ```date_added```
+   - ```release_year```
+   - ```rating```
+   - ```duration```
+   - ```genres```
+   - ```language```
+   - ```description```
+   - ```popularity```
+   - ```vote_count```
+   - ```vote_average```
 
-#### Files used:
-```bash
-netflix_movies_detailed_up_to_2025.csv
-netflix_tv_shows_detailed_up_to_2025.csv
-```
-
-#### Columns kept for analysis:
-```bash
-title, type, release_year, rating, vote_count, country, genres
-```
+For this analysis and for consistency, I focused on ```title, type, release_year, rating, vote_count, country, genres``` from both files, as these fields directly relate to the questions I aimed to answer. 
 
 ## Process
 #### 1. Data Cleaning (Python / Pandas)
